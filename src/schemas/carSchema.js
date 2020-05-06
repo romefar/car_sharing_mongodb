@@ -13,7 +13,7 @@ const carSchema = new Schema({
     maxlength: [17, 'VIN length cannot be greater than 17.'],
     match: [/[A-HJ-NPR-Z0-9]{13}[0-9]{4}/g, 'Invalid VIN.']
   },
-  registartionNumber: {
+  registrationNumber: {
     type: String,
     unique: true,
     uppercase: true,
@@ -72,8 +72,11 @@ const carSchema = new Schema({
       message: props => `Mileage (${props.value}) must be an integer value.`
     }
   },
-  geometry: locationSchema,
-  runs: [runSchema],
+  geometry: {
+    type: locationSchema,
+    required: [true, 'Location is required.']
+  },
+  currentRun: runSchema,
   bookingsHistory: [bookingSchema]
 })
 

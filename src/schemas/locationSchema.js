@@ -11,6 +11,6 @@ const locationSchema = new Schema({
     required: [true, 'Coordinated are required.'],
     index: '2dsphere'
   }
-})
+}, { _id: false })
 
 module.exports = locationSchema

@@ -3,7 +3,8 @@ const driverSchema = require('./driverSchema')
 
 const runSchema = new Schema({
   startDate: {
-    type: Date
+    type: Date,
+    default: new Date().toJSON()
   },
   endDate: {
     type: Date

@@ -4,7 +4,6 @@ const creditCardSchema = require('./creditCardSchema')
 const driverSchema = new Schema({
   licenseNumber: {
     type: String,
-    unique: true,
     required: [true, 'Driver license is required.'],
     uppercase: true,
     match: [/^[0-9A-Z-]+$/g, 'The driver license can only contain letters, numbers and hyphen characters.']
