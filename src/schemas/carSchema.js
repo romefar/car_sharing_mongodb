@@ -72,6 +72,10 @@ const carSchema = new Schema({
       message: props => `Mileage (${props.value}) must be an integer value.`
     }
   },
+  useCounter: {
+    type: Number,
+    default: 0
+  },
   geometry: {
     type: locationSchema,
     required: [true, 'Location is required.']
