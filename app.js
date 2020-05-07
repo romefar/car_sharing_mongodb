@@ -10,3 +10,5 @@ app.use(carsRoute)
 app.listen(process.env.DB_DEV_PORT, () => {
   console.log(`The server is running on port ${process.env.DB_DEV_PORT}`)
 })
+
+//  C:/Users/Vladislav/mongodb/bin/mongod.exe --dbpath=C:/Users/Vladislav/mongodb-data
