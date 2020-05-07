@@ -4,7 +4,7 @@ require('dotenv/config')
 mongoose.connect(`mongodb://${process.env.DB_DEV_HOST}:${process.env.DB_DEV_DB_PORT}/${process.env.DB_DEV_NAME}`, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useFindAndModify: true
+  useFindAndModify: false
 })
   .then(() => {
     console.log('Succesfully connected to database.')
