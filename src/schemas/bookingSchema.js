@@ -24,8 +24,7 @@ const bookingSchema = new Schema({
     }
   },
   startDate: {
-    type: Date,
-    default: new Date().toJSON()
+    type: Date
   },
   endDate: {
     type: Date
