@@ -67,7 +67,7 @@ router.put('/cars/:id/authorize', async (req, res) => {
 
     res.send(car)
   } catch (error) {
-    res.status(400).send(error)
+    res.status(500).send(error)
   }
 })
 
@@ -109,7 +109,7 @@ router.post('/cars/:id/book', async (req, res) => {
 
     res.send(car || [])
   } catch (error) {
-    res.status(400).send(error)
+    res.status(500).send(error)
   }
 })
 
@@ -125,11 +125,11 @@ router.put('/cars/:id/active', async (req, res) => {
       }
     }, { new: true })
 
-    if (!car) return res.status(404).send({ error: 'You are not allowed to book a car with abauthorized card.' })
+    if (!car) return res.status(404).send({ error: 'You are not allowed to book a car with an unauthorized card.' })
 
     res.send(car || [])
   } catch (error) {
-    res.status(400).send(error)
+    res.status(500).send(error)
   }
 })
 
@@ -140,6 +140,7 @@ router.put('/cars/:id/end', async (req, res) => {
     const carOld = await Car.findById(id)
 
     if (!carOld) return res.status(404).send({ error: 'Car was not found.' })
+    if (!finishFuelLevel || !finishMileage) return res.status(400).send({ error: 'You have to provide a finish fuel level and finish mileage.' })
 
     const car = await Car.findOneAndUpdate({ _id: id, 'bookingsHistory.status': 'Active' }, {
       $set: {
@@ -156,7 +157,7 @@ router.put('/cars/:id/end', async (req, res) => {
 
     res.send(car || [])
   } catch (error) {
-    res.status(400).send(error)
+    res.status(500).send(error)
   }
 })
 
@@ -239,7 +240,7 @@ router.delete('/cars', async (req, res) => {
 
     res.send(car)
   } catch (error) {
-    res.status(400).send(error)
+    res.status(500).send(error)
   }
 })
 
