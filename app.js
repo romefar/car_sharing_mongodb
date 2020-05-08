@@ -14,5 +14,3 @@ app.use('/api/v1/', carsRoute)
 app.listen(port, () => {
   console.log(chalk.green(`The server is running on port ${port}`))
 })
-
-//  C:/Users/Vladislav/mongodb/bin/mongod.exe --dbpath=C:/Users/Vladislav/mongodb-data
