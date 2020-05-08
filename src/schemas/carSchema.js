@@ -11,7 +11,7 @@ const carSchema = new Schema({
     required: [true, 'VIN is required.'],
     minlength: [17, 'VIN length cannot be less than 17.'],
     maxlength: [17, 'VIN length cannot be greater than 17.'],
-    match: [/[A-HJ-NPR-Z0-9]{13}[0-9]{4}/g, 'Invalid VIN.']
+    match: [/[A-HJ-NPR-Z0-9]{13}[0-9]{4}/, 'Invalid VIN.']
   },
   registrationNumber: {
     type: String,
@@ -20,18 +20,20 @@ const carSchema = new Schema({
     required: [true, 'Registartion number is required.'],
     minlength: [5, 'Invalid EU vehicle registration number. The number length must be between 5 and 9.'],
     maxlength: [9, 'Invalid EU vehicle registration number. The number length must be between 5 and 9.'],
-    match: [/^[A-Z0-9-]+$/g, 'The registration number can only contain letters, numbers and hyphen characters.']
+    match: [/^[A-Z0-9-]+$/, 'The registration number can only contain letters, numbers and hyphen characters.']
   },
   productionInfo: {
     brand: {
       type: String,
+      trim: true,
       required: [true, 'Brand name is required.'],
-      match: [/^[a-zA-Z-]+$/g, 'The brand name can only contain letters and hyphen characters.']
+      match: [/^[a-zA-Z- ]+$/, 'The brand name can only contain letters and hyphen characters.']
     },
     model: {
       type: String,
+      trim: true,
       required: [true, 'Model name is required.'],
-      match: [/^[a-zA-Z0-9]+$/g, 'The model name can only contain letters and numbers characters.']
+      match: [/^[a-zA-Z0-9]+$/, 'The model name can only contain letters and numbers characters.']
     },
     date: {
       type: Date,
